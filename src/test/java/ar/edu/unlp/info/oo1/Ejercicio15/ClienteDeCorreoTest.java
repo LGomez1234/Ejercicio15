@@ -37,6 +37,8 @@ public class ClienteDeCorreoTest {
     	Email email = new Email("hola", "chau");
 		clienteCorreo.recibir(email);
 		assertEquals(clienteCorreo.buscar("hola"));
+		assertEquals(clienteCorreo.mover("hola"));
+		assertEquals(clienteCorreo.buscar("hola"));
         assertNull(clienteCorreo.buscar("perro"));	
     	
     	
@@ -44,10 +46,13 @@ public class ClienteDeCorreoTest {
     }
 	@Test
 	void tamanioEmail () {
-		
+		assertEquals(0,clienteCorreo.espacioOcupado());//deberia agregar un archivo al mail o asi con el titulo y cuerpo esta bien??
 		Email email=new Email("Hola","chau");
+		Email email2=new Email("Hola","chau");
 		clienteCorreo.recibir(email);
-		assertEquals(8,clienteCorreo.espacioOcupado());//deberia agregar un archivo al mail o asi con el titulo y cuerpo esta bien??
+		clienteCorrreo.recibir(email2);
+	    clienteCorreo.mover(email2,carpeta);
+		assertEquals(16,clienteCorreo.espacioOcupado());//deberia agregar un archivo al mail o asi con el titulo y cuerpo esta bien??
 		
 		
 	}
