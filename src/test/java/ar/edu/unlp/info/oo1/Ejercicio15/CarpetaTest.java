@@ -28,15 +28,20 @@ public class CarpetaTest {
 		
 		Email e=new Email("hola","mundo") ;
 		carpeta.agregarEmail(e);
-		assertNotNull(carpeta.buscar("mundo"));
-		
+		assertEquals(carpeta.buscar("mundo"));
+		assertNull(carpeta.buscar("perro"));
 	}
 	@Test
 	void tamanioTest() {
+		;
+		assertEquals(0,carpeta.tamanioCarpeta());
 		Email e=new Email("hola","mundo");
+		Email e2=new Email2("hola","mundo");
 		carpeta.agregarEmail(e);
-		assertEquals(9,carpeta.tamanioCarpeta());
+		carpeta.agregarEmail(e2);
+		assertEquals(18,carpeta.tamanioCarpeta());
 	}
+	
 	
 	
 	@Test 
@@ -47,7 +52,7 @@ public class CarpetaTest {
 		Carpeta carpeta2 = new Carpeta("carpeta 2");
 		carpeta.mover(e,carpeta2);
 		assertNull(carpeta.buscar("hola"));
-		aseertNotNull(carpeta2.buscar("hola"));
+		aseertEquals(e,carpeta2.buscar("hola"));
 		
 		
 		
