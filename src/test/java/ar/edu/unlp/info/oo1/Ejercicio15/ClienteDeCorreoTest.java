@@ -36,8 +36,8 @@ public class ClienteDeCorreoTest {
     void buscarTest() {
     	Email email = new Email("hola", "chau");
 		clienteCorreo.recibir(email);
-		assertNotNull(clienteCorreo.buscar("hola"));
-	
+		assertEquals(clienteCorreo.buscar("hola"));
+        assertNull(clienteCorreo.buscar("perro"));	
     	
     	
     	
